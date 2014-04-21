@@ -1,0 +1,33 @@
+# d1 is called by the hidden auth field in the login form
+
+::auth=d1,LDAP
+Debug
+BindUser cn=ldapqueryuser1,cn=builtin,dc=univ,dc=dir,dc=thisIsSpecificToYourUniversity,dc=edu
+BindPassword -Obscure thisIsYourLDAPpassword
+DisableReferralChasing
+URL ldaps://ldap.ad.yourUniversity.edu/DC=univ,DC=dir,DC=thisIsSpecificToYourUniversity,DC=edu?sAMAccountName?sub?(objectClass=person)
+IfUnauthenticated; Stop
+
+If login:url =~ "/userObject/i" {
+        Set session:uid = auth:extensionAttribute2
+        Set session:emailAddress = auth:mail
+        Set session:forename = auth:givenname
+        Set session:surname = auth:sn
+        Set session:groupNumber = 58460
+        Set session:instNumber = yourWorldCatInstNumberGoesHere
+        Set session:bannedInRemoteCirculation="N"
+}
+/LDAP
+
+# d2 is passed to ezproxy in the querystring from authenticate-user-ticket.php after an Alma/SVP user is authenticated
+# if the user is an SVP (Summit Visiting Patron), they are authenticated via /alma/authenticate-user-ticket.php, and sent here with a ticket which must be verified
+# the MD5 yourEzproxyUserTxtFileMD5secret must match the $secret in authenticate-user-ticket.php
+
+::auth=d2,Ticket
+  TimeValid 10
+  MD5 yourEzproxyUserTxtFileMD5secret
+  Expired; Deny expired.html
+  If UserFile("iii-fake.txt") {
+    # iii-fake.txt gets the users details, like email, first and last name, etc...
+  }
+/Ticket

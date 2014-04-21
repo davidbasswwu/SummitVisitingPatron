@@ -1,0 +1,30 @@
+::III
+Debug
+Host yourEZproxyServerIPaddress:80
+
+# PatronAPI may be down
+IfRefused; Deny irefused.htm
+
+# Patron's Account is expired
+IfExpired; Deny iexpired.htm
+
+# IfUnauthenticated; Stop
+
+Set session:uid = auth:pu
+Set session:emailAddress = auth:pz
+Set session:forename = auth:givenname
+Set session:surname = auth:sn
+
+# Set Summit Group Number and WorldCat Institution Number
+Set session:groupNumber = 58460
+Set session:instNumber = 3126
+
+Set session:bannedInRemoteCirculation="N"
+
+# ptype set to category
+Set session:category = auth:p47
+
+# expiration date set to expiryDate
+Set session:expiryDate = auth:p43
+
+ /III

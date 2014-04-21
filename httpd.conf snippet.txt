@@ -1,0 +1,22 @@
+# This section is to support David's ezproxy-iii.php script which mimics the
+# III Patron API server, against which EZProxy performs Summit authentication
+# of visiting patrons. EZProxy doesn't know how authenticate against Alma,
+# so ezproxy-iii.php does that for it, while presenting a III Patron API interface
+# that EZProxy understands.
+# The format of a III Patron API request is:
+#   http://www.example.com/PATRONAPI/username/dump
+# so that's the only way that EZProxy will format its request.
+# The RewriteRule extracts the "username" portion and makes it the query string
+# for ezproxy-iii.php.
+# This only works in an "Alias" / "<Location>" block like this.
+# Trying it in a .htaccess and a <Directory> block was unsuccessful.
+
+Alias /PATRONAPI /var/www/htdocs/alma/visiting-patron
+<Location "/PATRONAPI">
+  Order deny,allow
+  Deny from all
+  Allow from yourServerIPaddress1 yourServerIPaddress2 yourServerIPaddress3
+  Options FollowSymLinks
+  RewriteEngine On
+  RewriteRule /([^\/]+)/dump$ ezproxy-iii.php?$1
+</Location>
