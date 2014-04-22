@@ -11,7 +11,7 @@
 		<label for="username">Username: </label>
 		<input  type="text" name="user" title="type your username">
 	  </p>
-	  <input type="hidden" name="url" value="https://ezproxynre.wwu.edu/userObject?service=getToken&#38;returnURL=https%3a%2f%2fmasternavezp.idm.oclc.org%2fuserObject%3fservice%3dproxyGetToken%26returnURL%3dhttp%253a%252f%252fsummit.worldcat.org%252fwcpa%252fservlet%252forg.oclc.lac.wcn.WcnPageServlet%253fwcoclcnum%253d181516677%2526consortiaRegistryId%253d58460%2526title%253dhunger-games%2526page%253dwcn%2526service%253dplaceRequest%2526svcUrl%253dhttp%25253A%25252F%25252Fworldcat.org%25252Fwebservices%25252Fdelivery%25252FrequestForm%25253Fitemtype%25253DMonograph%2526partner%253doclc%2526wcpartner%253doclc%2526oclcnum%253d181516677">
+	  <input type="hidden" name="url" value="^U">
 	  <p class="flush">
 		<label for="password">Password: </label>
 		<input type="password" name="pass" title="type your password">
