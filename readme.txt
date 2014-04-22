@@ -6,11 +6,7 @@ To allow visiting patrons (who do not have standard WWU user accounts) to borrow
 user status at their own university by having them login to their own version of Primo in front of one of our staff members, who then creates an account 
 for them in Alma (as a Summit Visiting Patron, or SVP).
 
-The technique we're using is to send normal users (LDAP authentication) directly to EZproxy (as it has always been done), 
-and SVP users to a PHP script that uses Alma to authenticate the user, generate an EZproxy ticket, and then send them back 
-to EZproxy, where they are then redirected to their desired destination.  There is a PDF flowchart in this 
-repository, but here is another version in case you can't see it online:  
-https://www.dropbox.com/s/udvuxsdig24sgrp/svp-alma-ezproxy-authentication-flowchart.pdf
+The technique we're using is to send normal users (LDAP authentication) directly to EZproxy (as it has always been done), and SVP users to a PHP script that uses Alma to authenticate the user, generate an EZproxy ticket, and then send them back to EZproxy, where they are then redirected to their desired destination.  There is a PDF flowchart in this repository, but here is another version in case you can't see it online:  https://www.dropbox.com/s/udvuxsdig24sgrp/svp-alma-ezproxy-authentication-flowchart.pdf
 
 Once the visiting patron has an account in our Alma database, they can be authenticated by choosing the SVP option on the login form.
 Please see the flowchart for an overview of how it works behind the scenes.
