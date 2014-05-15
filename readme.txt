@@ -15,7 +15,7 @@ To use this in your environment, you'll need to:
 1 - edit your ezproxy/user.txt file (see user.txt)
 2 - add the iii-fake.txt file to your ezproxy folder 
 3 - tweak your ezproxy/docs/login.html file (see login-form.html.txt)
-4 - modify your web server's (Apache) configuration (see httpd.conf snippet.txt)
+4 - modify your web server's (Apache) configuration (see httpd.conf snippet.txt).  IIS users might be able to accomplish this via http://www.iis.net/downloads/microsoft/url-rewrite or similar add-on.
 5 - add the files in the 'alma' folder to your webserver.  Customization instructions are included in each file.
 6 - restart Ezproxy and Apache after you make changes to those configuration files.
 
