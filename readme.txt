@@ -1,5 +1,5 @@
 David Bass @ WWU
-19 Dec 2013, updated 22 April 2014
+10 June 2014
 Summit Visiting Patron
 
 To allow visiting patrons (who do not have standard WWU user accounts) to borrow items and have them delivered to our library, we verify their active 
@@ -19,6 +19,19 @@ To use this in your environment, you'll need to:
 5 - add the files in the 'alma' folder to your webserver.  Customization instructions are included in each file.
 6 - restart Ezproxy and Apache after you make changes to those configuration files.
 
+Troubleshooting Tips:
+1 - go through each step of the flowchart, and make sure each component is working individually. For instance, check http://your.server.edu/PATRONAPI/theusername/dump to make sure it is producing the right output.
+It should look something like:
+ Content-type: text/html USER NAME[pu]=theusername
+ PATRN NAME[givenname]=Summit
+ PATRN NAME[sn]=Testuser
+ EMAIL ADDR[pz]=someone@example.com
+ CATEGORY[p47]=SummitVP
+ EXP DATE[p43]=10-18-2016
+
+2 - check your error logs (including ezproxy/messages.txt)
+
+----------------
 
 PS_
 Thanks to:
